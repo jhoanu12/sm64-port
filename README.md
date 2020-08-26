@@ -16,6 +16,7 @@ A prior copy of the game is required to extract the assets.
  - Experimental Stereo 3D support; add build flag `ENABLE_N3DS_3D_MODE=1` to try it out
  - Support injection of [SMDH](https://www.3dbrew.org/wiki/SMDH) file into the .3dsx
      - Change the `icon.png` in the base of this repository before building.
+ - Experimental Mini-Map; bottom screen displays an overview of the current level
 
 ## Building
 
@@ -33,7 +34,7 @@ After building, either install the `.cia` if you made one, or copy over the `sm6
 git clone https://github.com/mkst/sm64-port.git
 ```
 
-**Nagivate into freshly checked out repo:**
+**Navigate into freshly checked out repo:**
 
 ```sh
 cd sm64-port
@@ -184,7 +185,7 @@ export DEVKITPPC=/opt/devkitpro/devkitPPC
 git clone https://github.com/mkst/sm64-port.git
 ```
 
-**Nagivate into freshly checked out repo:**
+**Navigate into freshly checked out repo:**
 
 ```sh
 cd sm64-port
@@ -249,6 +250,9 @@ sm64
 ## Credits
 
  - Credits go to [Gericom](https://github.com/Gericom) for the [sm64_3ds](https://github.com/sm64-port/sm64_3ds) port that this flavour is based off.
+ - Minimap models:
+   - [alecpike](https://www.models-resource.com/submitter/alecpike/); BOB
+   - [Turtle Boy](https://www.models-resource.com/submitter/Turtle+Boy/); LLL; WF
 
 ## Contributing
 

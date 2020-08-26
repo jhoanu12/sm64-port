@@ -1,5 +1,5 @@
 diff --git a/Makefile b/Makefile
-index db5b620..52177e0 100644
+index 7014d66..eb86fba 100644
 --- a/Makefile
 +++ b/Makefile
 @@ -264,7 +264,7 @@ else
@@ -11,7 +11,7 @@ index db5b620..52177e0 100644
  endif
  endif
  
-@@ -648,6 +648,8 @@ $(BUILD_DIR)/include/text_strings.h: $(BUILD_DIR)/include/text_menu_strings.h
+@@ -665,6 +665,8 @@ $(BUILD_DIR)/include/text_strings.h: $(BUILD_DIR)/include/text_menu_strings.h
  $(BUILD_DIR)/src/menu/file_select.o: $(BUILD_DIR)/include/text_strings.h
  $(BUILD_DIR)/src/menu/star_select.o: $(BUILD_DIR)/include/text_strings.h
  $(BUILD_DIR)/src/game/ingame_menu.o: $(BUILD_DIR)/include/text_strings.h
@@ -92,7 +92,7 @@ index 0000000..dc4481e
 +#endif // TARGET_N64
 diff --git a/enhancements/puppycam.inc.c b/enhancements/puppycam.inc.c
 new file mode 100644
-index 0000000..eedb206
+index 0000000..f75b329
 --- /dev/null
 +++ b/enhancements/puppycam.inc.c
 @@ -0,0 +1,1058 @@
@@ -1813,7 +1813,7 @@ index f56ed02..36bb6d9 100644
  extern struct Object *gCutsceneFocus;
  extern struct Object *gSecondCameraFocus;
 diff --git a/src/game/game_init.c b/src/game/game_init.c
-index 3ce5f2d..856388b 100644
+index 3ce5f2d..b12b8df 100644
 --- a/src/game/game_init.c
 +++ b/src/game/game_init.c
 @@ -20,6 +20,8 @@
@@ -1834,7 +1834,7 @@ index 3ce5f2d..856388b 100644
  #ifdef TARGET_N64
      rendering_init();
 diff --git a/src/game/hud.c b/src/game/hud.c
-index 5d78cfc..2a9b874 100644
+index 9dc514e..1355475 100644
 --- a/src/game/hud.c
 +++ b/src/game/hud.c
 @@ -13,6 +13,7 @@
@@ -1845,10 +1845,10 @@ index 5d78cfc..2a9b874 100644
  
  /* @file hud.c
   * This file implements HUD rendering and power meter animations.
-@@ -472,7 +473,8 @@ void render_hud(void) {
- 
-         if (hudDisplayFlags & HUD_DISPLAY_FLAG_CAMERA_AND_POWER) {
-             render_hud_power_meter();
+@@ -502,7 +503,8 @@ void render_hud(void) {
+             gDPSetHud(gDisplayListHead++, 1);
+             gDPSet2d(gDisplayListHead++, 0);
+ #endif
 -            render_hud_camera_status();
 +            if (!newcam_active)
 +                render_hud_camera_status();
@@ -1856,7 +1856,7 @@ index 5d78cfc..2a9b874 100644
  
          if (hudDisplayFlags & HUD_DISPLAY_FLAG_TIMER) {
 diff --git a/src/game/ingame_menu.c b/src/game/ingame_menu.c
-index 04047a1..dee4fb9 100644
+index b9a43df..f6f2d7f 100644
 --- a/src/game/ingame_menu.c
 +++ b/src/game/ingame_menu.c
 @@ -22,6 +22,7 @@
@@ -2258,4 +2258,3 @@ index 00f3fae..038216d 100644
 +extern s16 rightstick[2];
  
  #endif
-

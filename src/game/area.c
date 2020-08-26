@@ -367,7 +367,7 @@ void render_game(void) {
 
 #ifdef ENABLE_N3DS_3D_MODE
         gDPForceFlush(gDisplayListHead++); // flush 3D scene
-        gDPSet2d(gDisplayListHead++, 1); // HUD is 2D
+        gDPSetHud(gDisplayListHead++, 1); // set hud mode
 #endif
         gSPViewport(gDisplayListHead++, VIRTUAL_TO_PHYSICAL(&D_8032CF00));
 
@@ -379,7 +379,7 @@ void render_game(void) {
         render_text_labels();
 #ifdef ENABLE_N3DS_3D_MODE
         gDPForceFlush(gDisplayListHead++); // flush hud
-        gDPSet2d(gDisplayListHead++, 0); // reset 2D mode
+        gDPSetHud(gDisplayListHead++, 0); // reset hud mode
 #endif
         do_cutscene_handler();
         print_displaying_credits_entry();
